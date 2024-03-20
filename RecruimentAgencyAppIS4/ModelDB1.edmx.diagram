@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8343adeece844f4f944c09e4947dc4f6" Name="Diagram1">
+        <EntityTypeShape EntityType="RecruimentAgencyModel1.Applicant" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecruimentAgencyModel1.Doljnost" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecruimentAgencyModel1.Goroda" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecruimentAgencyModel1.Grajdanstvo" Width="1.5" PointX="0.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecruimentAgencyModel1.Kompanii" Width="1.5" PointX="3" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecruimentAgencyModel1.KompaniNaimenovanie" Width="1.5" PointX="0.75" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecruimentAgencyModel1.MestoRabotu" Width="1.5" PointX="0.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecruimentAgencyModel1.NaimenovanieVacanciy" Width="1.5" PointX="6" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecruimentAgencyModel1.Pol" Width="1.5" PointX="0.75" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecruimentAgencyModel1.Polzovateli" Width="1.5" PointX="5.25" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecruimentAgencyModel1.RegionNaimenovanie" Width="1.5" PointX="6" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecruimentAgencyModel1.Roles" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecruimentAgencyModel1.Specializacii" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecruimentAgencyModel1.Specialnost" Width="1.5" PointX="0.75" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecruimentAgencyModel1.sysdiagrams" Width="1.5" PointX="8.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecruimentAgencyModel1.Vacansies" Width="1.5" PointX="8.25" PointY="2.875" IsExpanded="true" />
+        <AssociationConnector Association="RecruimentAgencyModel1.FK_Applicant_Doljnost" ManuallyRouted="false" />
+        <AssociationConnector Association="RecruimentAgencyModel1.FK_Applicant_Doljnost1" ManuallyRouted="false" />
+        <AssociationConnector Association="RecruimentAgencyModel1.FK_Applicant_Goroda" ManuallyRouted="false" />
+        <AssociationConnector Association="RecruimentAgencyModel1.FK_Applicant_Grajdanstvo" ManuallyRouted="false" />
+        <AssociationConnector Association="RecruimentAgencyModel1.FK_Applicant_MestoRabotu" ManuallyRouted="false" />
+        <AssociationConnector Association="RecruimentAgencyModel1.FK_Applicant_Pol" ManuallyRouted="false" />
+        <AssociationConnector Association="RecruimentAgencyModel1.FK_Applicant_Specialnost" ManuallyRouted="false" />
+        <AssociationConnector Association="RecruimentAgencyModel1.FK_Polzovateli_Applicant" ManuallyRouted="false" />
+        <AssociationConnector Association="RecruimentAgencyModel1.FK_Vacansies_Doljnost" ManuallyRouted="false" />
+        <AssociationConnector Association="RecruimentAgencyModel1.FK_Kompanii_CompaniNaimenovanie" ManuallyRouted="false" />
+        <AssociationConnector Association="RecruimentAgencyModel1.FK_Polzovateli_Kompanii" ManuallyRouted="false" />
+        <AssociationConnector Association="RecruimentAgencyModel1.FK_Vacansies_Kompanii" ManuallyRouted="false" />
+        <AssociationConnector Association="RecruimentAgencyModel1.FK_Vacansies_NaimenovanieVacanciy" ManuallyRouted="false" />
+        <AssociationConnector Association="RecruimentAgencyModel1.FK_Polzovateli_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="RecruimentAgencyModel1.FK_Vacansies_RegionNaimenovanie" ManuallyRouted="false" />
+        <AssociationConnector Association="RecruimentAgencyModel1.VacanciiAndApplicant" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

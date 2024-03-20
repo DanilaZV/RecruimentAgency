@@ -1,0 +1,1167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище RecruimentAgencyModel1" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Applicant">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FIO" Type="nvarchar" MaxLength="100" />
+          <Property Name="idGoroda" Type="int" Nullable="false" />
+          <Property Name="DataRojenia" Type="date" />
+          <Property Name="idPola" Type="int" Nullable="false" />
+          <Property Name="idGrajdanstva" Type="int" Nullable="false" />
+          <Property Name="OpitRabotu" Type="nvarchar" MaxLength="50" />
+          <Property Name="idMestaRabotu" Type="int" Nullable="false" />
+          <Property Name="NachaloRabotu" Type="nchar" MaxLength="10" />
+          <Property Name="OkonchanieRabotu" Type="nchar" MaxLength="10" />
+          <Property Name="idDoljnosti" Type="int" Nullable="false" />
+          <Property Name="Obyzonasti" Type="nchar" MaxLength="10" />
+          <Property Name="InformaciaOSebe" Type="nchar" MaxLength="10" />
+          <Property Name="KluchevieNaviki" Type="nchar" MaxLength="10" />
+          <Property Name="idSpecialnost" Type="int" Nullable="false" />
+          <Property Name="idJelaimayaDoljnost" Type="int" Nullable="false" />
+          <Property Name="Zarplata" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Doljnost">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NaimenovanieDoljnosti" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Goroda">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NazvanieGoroda" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Grajdanstvo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NaimenovanieGrajdanstva" Type="nvarchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kompanii">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idNaimenovanieKompanii" Type="int" Nullable="false" />
+          <Property Name="INN" Type="bigint" Nullable="false" />
+          <Property Name="OGRN" Type="bigint" Nullable="false" />
+          <Property Name="DataRegistratia" Type="date" />
+          <Property Name="UridicheskiyAdres" Type="nvarchar" MaxLength="500" />
+          <Property Name="Rukovoditel" Type="nvarchar" MaxLength="50" />
+          <Property Name="OpisanieKompanii" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="KompaniNaimenovanie">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NaimenovanieKompani" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MestoRabotu">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NaimenovanieMestaRabotu" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NaimenovanieVacanciy">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NaimenovanieVacancii" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pol">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NaimenovaniePola" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Polzovateli">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="idRole" Type="int" Nullable="false" />
+          <Property Name="idApplicant" Type="int" />
+          <Property Name="idKompanii" Type="int" />
+        </EntityType>
+        <EntityType Name="RegionNaimenovanie">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NaimenovanieRegion" Type="nvarchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NaimenovanieRole" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Specializacii">
+          <Key>
+            <PropertyRef Name="idSpecializacii" />
+          </Key>
+          <Property Name="idSpecializacii" Type="int" Nullable="false" />
+          <Property Name="NaimenovanieSpecializacii" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Specialnost">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NaimenovanieSpecialnosti" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "RecruimentAgency.dbo.VacanciiAndApplicant" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="VacanciiAndApplicant">
+          <Key>
+            <PropertyRef Name="idVacancii" />
+            <PropertyRef Name="idAplicant" />
+          </Key>
+          <Property Name="idVacancii" Type="int" Nullable="false" />
+          <Property Name="idAplicant" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vacansies">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idKompanii" Type="int" Nullable="false" />
+          <Property Name="idNaimenovaniaVacancia" Type="int" Nullable="false" />
+          <Property Name="idDoljnosti" Type="int" Nullable="false" />
+          <Property Name="idRegion" Type="int" Nullable="false" />
+          <Property Name="ZarabotnaiPlata" Type="nvarchar" MaxLength="100" />
+          <Property Name="Uslovia" Type="nvarchar(max)" />
+          <Property Name="Obazanosti" Type="nvarchar(max)" />
+          <Property Name="Trebovania" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_Applicant_Doljnost">
+          <End Role="Doljnost" Type="Self.Doljnost" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Applicant" Type="Self.Applicant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doljnost">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Applicant">
+              <PropertyRef Name="idDoljnosti" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Applicant_Doljnost1">
+          <End Role="Doljnost" Type="Self.Doljnost" Multiplicity="1" />
+          <End Role="Applicant" Type="Self.Applicant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doljnost">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Applicant">
+              <PropertyRef Name="idJelaimayaDoljnost" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Applicant_Goroda">
+          <End Role="Goroda" Type="Self.Goroda" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Applicant" Type="Self.Applicant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Goroda">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Applicant">
+              <PropertyRef Name="idGoroda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Applicant_Grajdanstvo">
+          <End Role="Grajdanstvo" Type="Self.Grajdanstvo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Applicant" Type="Self.Applicant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grajdanstvo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Applicant">
+              <PropertyRef Name="idGrajdanstva" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Applicant_MestoRabotu">
+          <End Role="MestoRabotu" Type="Self.MestoRabotu" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Applicant" Type="Self.Applicant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MestoRabotu">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Applicant">
+              <PropertyRef Name="idMestaRabotu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Applicant_Pol">
+          <End Role="Pol" Type="Self.Pol" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Applicant" Type="Self.Applicant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pol">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Applicant">
+              <PropertyRef Name="idPola" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Applicant_Specialnost">
+          <End Role="Specialnost" Type="Self.Specialnost" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Applicant" Type="Self.Applicant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Specialnost">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Applicant">
+              <PropertyRef Name="idSpecialnost" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kompanii_CompaniNaimenovanie">
+          <End Role="KompaniNaimenovanie" Type="Self.KompaniNaimenovanie" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Kompanii" Type="Self.Kompanii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KompaniNaimenovanie">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Kompanii">
+              <PropertyRef Name="idNaimenovanieKompanii" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Polzovateli_Applicant">
+          <End Role="Applicant" Type="Self.Applicant" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Polzovateli" Type="Self.Polzovateli" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Applicant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Polzovateli">
+              <PropertyRef Name="idApplicant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Polzovateli_Kompanii">
+          <End Role="Kompanii" Type="Self.Kompanii" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Polzovateli" Type="Self.Polzovateli" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kompanii">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Polzovateli">
+              <PropertyRef Name="idKompanii" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Polzovateli_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Polzovateli" Type="Self.Polzovateli" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Polzovateli">
+              <PropertyRef Name="idRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VacanciiAndApplicant_Applicant">
+          <End Role="Applicant" Type="Self.Applicant" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="VacanciiAndApplicant" Type="Self.VacanciiAndApplicant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Applicant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="VacanciiAndApplicant">
+              <PropertyRef Name="idAplicant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VacanciiAndApplicant_Vacansies">
+          <End Role="Vacansies" Type="Self.Vacansies" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="VacanciiAndApplicant" Type="Self.VacanciiAndApplicant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vacansies">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="VacanciiAndApplicant">
+              <PropertyRef Name="idVacancii" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vacansies_Doljnost">
+          <End Role="Doljnost" Type="Self.Doljnost" Multiplicity="1" />
+          <End Role="Vacansies" Type="Self.Vacansies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doljnost">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Vacansies">
+              <PropertyRef Name="idDoljnosti" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vacansies_Kompanii">
+          <End Role="Kompanii" Type="Self.Kompanii" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Vacansies" Type="Self.Vacansies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kompanii">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Vacansies">
+              <PropertyRef Name="idKompanii" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vacansies_NaimenovanieVacanciy">
+          <End Role="NaimenovanieVacanciy" Type="Self.NaimenovanieVacanciy" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Vacansies" Type="Self.Vacansies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NaimenovanieVacanciy">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Vacansies">
+              <PropertyRef Name="idNaimenovaniaVacancia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vacansies_RegionNaimenovanie">
+          <End Role="RegionNaimenovanie" Type="Self.RegionNaimenovanie" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Vacansies" Type="Self.Vacansies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegionNaimenovanie">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Vacansies">
+              <PropertyRef Name="idRegion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище RecruimentAgencyModel1Container">
+          <EntitySet Name="Applicant" EntityType="Self.Applicant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Doljnost" EntityType="Self.Doljnost" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Goroda" EntityType="Self.Goroda" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Grajdanstvo" EntityType="Self.Grajdanstvo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kompanii" EntityType="Self.Kompanii" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KompaniNaimenovanie" EntityType="Self.KompaniNaimenovanie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MestoRabotu" EntityType="Self.MestoRabotu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NaimenovanieVacanciy" EntityType="Self.NaimenovanieVacanciy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pol" EntityType="Self.Pol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Polzovateli" EntityType="Self.Polzovateli" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RegionNaimenovanie" EntityType="Self.RegionNaimenovanie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Specializacii" EntityType="Self.Specializacii" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Specialnost" EntityType="Self.Specialnost" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vacansies" EntityType="Self.Vacansies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VacanciiAndApplicant" EntityType="Self.VacanciiAndApplicant" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VacanciiAndApplicant].[idVacancii] AS [idVacancii], 
+    [VacanciiAndApplicant].[idAplicant] AS [idAplicant]
+    FROM [dbo].[VacanciiAndApplicant] AS [VacanciiAndApplicant]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Applicant_Doljnost" Association="Self.FK_Applicant_Doljnost">
+            <End Role="Doljnost" EntitySet="Doljnost" />
+            <End Role="Applicant" EntitySet="Applicant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Applicant_Doljnost1" Association="Self.FK_Applicant_Doljnost1">
+            <End Role="Doljnost" EntitySet="Doljnost" />
+            <End Role="Applicant" EntitySet="Applicant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Applicant_Goroda" Association="Self.FK_Applicant_Goroda">
+            <End Role="Goroda" EntitySet="Goroda" />
+            <End Role="Applicant" EntitySet="Applicant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Applicant_Grajdanstvo" Association="Self.FK_Applicant_Grajdanstvo">
+            <End Role="Grajdanstvo" EntitySet="Grajdanstvo" />
+            <End Role="Applicant" EntitySet="Applicant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Applicant_MestoRabotu" Association="Self.FK_Applicant_MestoRabotu">
+            <End Role="MestoRabotu" EntitySet="MestoRabotu" />
+            <End Role="Applicant" EntitySet="Applicant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Applicant_Pol" Association="Self.FK_Applicant_Pol">
+            <End Role="Pol" EntitySet="Pol" />
+            <End Role="Applicant" EntitySet="Applicant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Applicant_Specialnost" Association="Self.FK_Applicant_Specialnost">
+            <End Role="Specialnost" EntitySet="Specialnost" />
+            <End Role="Applicant" EntitySet="Applicant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kompanii_CompaniNaimenovanie" Association="Self.FK_Kompanii_CompaniNaimenovanie">
+            <End Role="KompaniNaimenovanie" EntitySet="KompaniNaimenovanie" />
+            <End Role="Kompanii" EntitySet="Kompanii" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Polzovateli_Applicant" Association="Self.FK_Polzovateli_Applicant">
+            <End Role="Applicant" EntitySet="Applicant" />
+            <End Role="Polzovateli" EntitySet="Polzovateli" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Polzovateli_Kompanii" Association="Self.FK_Polzovateli_Kompanii">
+            <End Role="Kompanii" EntitySet="Kompanii" />
+            <End Role="Polzovateli" EntitySet="Polzovateli" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Polzovateli_Roles" Association="Self.FK_Polzovateli_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Polzovateli" EntitySet="Polzovateli" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VacanciiAndApplicant_Applicant" Association="Self.FK_VacanciiAndApplicant_Applicant">
+            <End Role="Applicant" EntitySet="Applicant" />
+            <End Role="VacanciiAndApplicant" EntitySet="VacanciiAndApplicant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VacanciiAndApplicant_Vacansies" Association="Self.FK_VacanciiAndApplicant_Vacansies">
+            <End Role="Vacansies" EntitySet="Vacansies" />
+            <End Role="VacanciiAndApplicant" EntitySet="VacanciiAndApplicant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vacansies_Doljnost" Association="Self.FK_Vacansies_Doljnost">
+            <End Role="Doljnost" EntitySet="Doljnost" />
+            <End Role="Vacansies" EntitySet="Vacansies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vacansies_Kompanii" Association="Self.FK_Vacansies_Kompanii">
+            <End Role="Kompanii" EntitySet="Kompanii" />
+            <End Role="Vacansies" EntitySet="Vacansies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vacansies_NaimenovanieVacanciy" Association="Self.FK_Vacansies_NaimenovanieVacanciy">
+            <End Role="NaimenovanieVacanciy" EntitySet="NaimenovanieVacanciy" />
+            <End Role="Vacansies" EntitySet="Vacansies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vacansies_RegionNaimenovanie" Association="Self.FK_Vacansies_RegionNaimenovanie">
+            <End Role="RegionNaimenovanie" EntitySet="RegionNaimenovanie" />
+            <End Role="Vacansies" EntitySet="Vacansies" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RecruimentAgencyModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Applicant">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FIO" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="idGoroda" Type="Int32" Nullable="false" />
+          <Property Name="DataRojenia" Type="DateTime" Precision="0" />
+          <Property Name="idPola" Type="Int32" Nullable="false" />
+          <Property Name="idGrajdanstva" Type="Int32" Nullable="false" />
+          <Property Name="OpitRabotu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="idMestaRabotu" Type="Int32" Nullable="false" />
+          <Property Name="NachaloRabotu" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="OkonchanieRabotu" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="idDoljnosti" Type="Int32" Nullable="false" />
+          <Property Name="Obyzonasti" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="InformaciaOSebe" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="KluchevieNaviki" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="idSpecialnost" Type="Int32" Nullable="false" />
+          <Property Name="idJelaimayaDoljnost" Type="Int32" Nullable="false" />
+          <Property Name="Zarplata" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Doljnost" Relationship="Self.FK_Applicant_Doljnost" FromRole="Applicant" ToRole="Doljnost" />
+          <NavigationProperty Name="Doljnost1" Relationship="Self.FK_Applicant_Doljnost1" FromRole="Applicant" ToRole="Doljnost" />
+          <NavigationProperty Name="Goroda" Relationship="Self.FK_Applicant_Goroda" FromRole="Applicant" ToRole="Goroda" />
+          <NavigationProperty Name="Grajdanstvo" Relationship="Self.FK_Applicant_Grajdanstvo" FromRole="Applicant" ToRole="Grajdanstvo" />
+          <NavigationProperty Name="MestoRabotu" Relationship="Self.FK_Applicant_MestoRabotu" FromRole="Applicant" ToRole="MestoRabotu" />
+          <NavigationProperty Name="Pol" Relationship="Self.FK_Applicant_Pol" FromRole="Applicant" ToRole="Pol" />
+          <NavigationProperty Name="Specialnost" Relationship="Self.FK_Applicant_Specialnost" FromRole="Applicant" ToRole="Specialnost" />
+          <NavigationProperty Name="Polzovateli" Relationship="Self.FK_Polzovateli_Applicant" FromRole="Applicant" ToRole="Polzovateli" />
+          <NavigationProperty Name="Vacansies" Relationship="Self.VacanciiAndApplicant" FromRole="Applicant" ToRole="Vacansies" />
+        </EntityType>
+        <EntityType Name="Doljnost">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NaimenovanieDoljnosti" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Applicant" Relationship="Self.FK_Applicant_Doljnost" FromRole="Doljnost" ToRole="Applicant" />
+          <NavigationProperty Name="Applicant1" Relationship="Self.FK_Applicant_Doljnost1" FromRole="Doljnost" ToRole="Applicant" />
+          <NavigationProperty Name="Vacansies" Relationship="Self.FK_Vacansies_Doljnost" FromRole="Doljnost" ToRole="Vacansies" />
+        </EntityType>
+        <EntityType Name="Goroda">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NazvanieGoroda" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Applicant" Relationship="Self.FK_Applicant_Goroda" FromRole="Goroda" ToRole="Applicant" />
+        </EntityType>
+        <EntityType Name="Grajdanstvo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NaimenovanieGrajdanstva" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Applicant" Relationship="Self.FK_Applicant_Grajdanstvo" FromRole="Grajdanstvo" ToRole="Applicant" />
+        </EntityType>
+        <EntityType Name="Kompanii">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idNaimenovanieKompanii" Type="Int32" Nullable="false" />
+          <Property Name="INN" Type="Int64" Nullable="false" />
+          <Property Name="OGRN" Type="Int64" Nullable="false" />
+          <Property Name="DataRegistratia" Type="DateTime" Precision="0" />
+          <Property Name="UridicheskiyAdres" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Rukovoditel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OpisanieKompanii" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="KompaniNaimenovanie" Relationship="Self.FK_Kompanii_CompaniNaimenovanie" FromRole="Kompanii" ToRole="KompaniNaimenovanie" />
+          <NavigationProperty Name="Polzovateli" Relationship="Self.FK_Polzovateli_Kompanii" FromRole="Kompanii" ToRole="Polzovateli" />
+          <NavigationProperty Name="Vacansies" Relationship="Self.FK_Vacansies_Kompanii" FromRole="Kompanii" ToRole="Vacansies" />
+        </EntityType>
+        <EntityType Name="KompaniNaimenovanie">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NaimenovanieKompani" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Kompanii" Relationship="Self.FK_Kompanii_CompaniNaimenovanie" FromRole="KompaniNaimenovanie" ToRole="Kompanii" />
+        </EntityType>
+        <EntityType Name="MestoRabotu">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NaimenovanieMestaRabotu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Applicant" Relationship="Self.FK_Applicant_MestoRabotu" FromRole="MestoRabotu" ToRole="Applicant" />
+        </EntityType>
+        <EntityType Name="NaimenovanieVacanciy">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NaimenovanieVacancii" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Vacansies" Relationship="Self.FK_Vacansies_NaimenovanieVacanciy" FromRole="NaimenovanieVacanciy" ToRole="Vacansies" />
+        </EntityType>
+        <EntityType Name="Pol">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NaimenovaniePola" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Applicant" Relationship="Self.FK_Applicant_Pol" FromRole="Pol" ToRole="Applicant" />
+        </EntityType>
+        <EntityType Name="Polzovateli">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="idRole" Type="Int32" Nullable="false" />
+          <Property Name="idApplicant" Type="Int32" />
+          <Property Name="idKompanii" Type="Int32" />
+          <NavigationProperty Name="Applicant" Relationship="Self.FK_Polzovateli_Applicant" FromRole="Polzovateli" ToRole="Applicant" />
+          <NavigationProperty Name="Kompanii" Relationship="Self.FK_Polzovateli_Kompanii" FromRole="Polzovateli" ToRole="Kompanii" />
+          <NavigationProperty Name="Roles" Relationship="Self.FK_Polzovateli_Roles" FromRole="Polzovateli" ToRole="Roles" />
+        </EntityType>
+        <EntityType Name="RegionNaimenovanie">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NaimenovanieRegion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Vacansies" Relationship="Self.FK_Vacansies_RegionNaimenovanie" FromRole="RegionNaimenovanie" ToRole="Vacansies" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NaimenovanieRole" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Polzovateli" Relationship="Self.FK_Polzovateli_Roles" FromRole="Roles" ToRole="Polzovateli" />
+        </EntityType>
+        <EntityType Name="Specializacii">
+          <Key>
+            <PropertyRef Name="idSpecializacii" />
+          </Key>
+          <Property Name="idSpecializacii" Type="Int32" Nullable="false" />
+          <Property Name="NaimenovanieSpecializacii" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Specialnost">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NaimenovanieSpecialnosti" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Applicant" Relationship="Self.FK_Applicant_Specialnost" FromRole="Specialnost" ToRole="Applicant" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Vacansies">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idKompanii" Type="Int32" Nullable="false" />
+          <Property Name="idNaimenovaniaVacancia" Type="Int32" Nullable="false" />
+          <Property Name="idDoljnosti" Type="Int32" Nullable="false" />
+          <Property Name="idRegion" Type="Int32" Nullable="false" />
+          <Property Name="ZarabotnaiPlata" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Uslovia" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Obazanosti" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Trebovania" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Doljnost" Relationship="Self.FK_Vacansies_Doljnost" FromRole="Vacansies" ToRole="Doljnost" />
+          <NavigationProperty Name="Kompanii" Relationship="Self.FK_Vacansies_Kompanii" FromRole="Vacansies" ToRole="Kompanii" />
+          <NavigationProperty Name="NaimenovanieVacanciy" Relationship="Self.FK_Vacansies_NaimenovanieVacanciy" FromRole="Vacansies" ToRole="NaimenovanieVacanciy" />
+          <NavigationProperty Name="RegionNaimenovanie" Relationship="Self.FK_Vacansies_RegionNaimenovanie" FromRole="Vacansies" ToRole="RegionNaimenovanie" />
+          <NavigationProperty Name="Applicant" Relationship="Self.VacanciiAndApplicant" FromRole="Vacansies" ToRole="Applicant" />
+        </EntityType>
+        <Association Name="FK_Applicant_Doljnost">
+          <End Role="Doljnost" Type="Self.Doljnost" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Applicant" Type="Self.Applicant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doljnost">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Applicant">
+              <PropertyRef Name="idDoljnosti" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Applicant_Doljnost1">
+          <End Role="Doljnost" Type="Self.Doljnost" Multiplicity="1" />
+          <End Role="Applicant" Type="Self.Applicant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doljnost">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Applicant">
+              <PropertyRef Name="idJelaimayaDoljnost" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Applicant_Goroda">
+          <End Role="Goroda" Type="Self.Goroda" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Applicant" Type="Self.Applicant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Goroda">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Applicant">
+              <PropertyRef Name="idGoroda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Applicant_Grajdanstvo">
+          <End Role="Grajdanstvo" Type="Self.Grajdanstvo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Applicant" Type="Self.Applicant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grajdanstvo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Applicant">
+              <PropertyRef Name="idGrajdanstva" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Applicant_MestoRabotu">
+          <End Role="MestoRabotu" Type="Self.MestoRabotu" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Applicant" Type="Self.Applicant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MestoRabotu">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Applicant">
+              <PropertyRef Name="idMestaRabotu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Applicant_Pol">
+          <End Role="Pol" Type="Self.Pol" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Applicant" Type="Self.Applicant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pol">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Applicant">
+              <PropertyRef Name="idPola" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Applicant_Specialnost">
+          <End Role="Specialnost" Type="Self.Specialnost" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Applicant" Type="Self.Applicant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Specialnost">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Applicant">
+              <PropertyRef Name="idSpecialnost" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Polzovateli_Applicant">
+          <End Role="Applicant" Type="Self.Applicant" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Polzovateli" Type="Self.Polzovateli" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Applicant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Polzovateli">
+              <PropertyRef Name="idApplicant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vacansies_Doljnost">
+          <End Role="Doljnost" Type="Self.Doljnost" Multiplicity="1" />
+          <End Role="Vacansies" Type="Self.Vacansies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doljnost">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Vacansies">
+              <PropertyRef Name="idDoljnosti" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kompanii_CompaniNaimenovanie">
+          <End Role="KompaniNaimenovanie" Type="Self.KompaniNaimenovanie" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Kompanii" Type="Self.Kompanii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KompaniNaimenovanie">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Kompanii">
+              <PropertyRef Name="idNaimenovanieKompanii" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Polzovateli_Kompanii">
+          <End Role="Kompanii" Type="Self.Kompanii" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Polzovateli" Type="Self.Polzovateli" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kompanii">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Polzovateli">
+              <PropertyRef Name="idKompanii" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vacansies_Kompanii">
+          <End Role="Kompanii" Type="Self.Kompanii" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Vacansies" Type="Self.Vacansies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kompanii">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Vacansies">
+              <PropertyRef Name="idKompanii" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vacansies_NaimenovanieVacanciy">
+          <End Role="NaimenovanieVacanciy" Type="Self.NaimenovanieVacanciy" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Vacansies" Type="Self.Vacansies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NaimenovanieVacanciy">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Vacansies">
+              <PropertyRef Name="idNaimenovaniaVacancia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Polzovateli_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Polzovateli" Type="Self.Polzovateli" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Polzovateli">
+              <PropertyRef Name="idRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vacansies_RegionNaimenovanie">
+          <End Role="RegionNaimenovanie" Type="Self.RegionNaimenovanie" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Vacansies" Type="Self.Vacansies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegionNaimenovanie">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Vacansies">
+              <PropertyRef Name="idRegion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="VacanciiAndApplicant">
+          <End Role="Applicant" Type="Self.Applicant" Multiplicity="*" />
+          <End Role="Vacansies" Type="Self.Vacansies" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="RecruimentAgencyEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Applicant" EntityType="Self.Applicant" />
+          <EntitySet Name="Doljnost" EntityType="Self.Doljnost" />
+          <EntitySet Name="Goroda" EntityType="Self.Goroda" />
+          <EntitySet Name="Grajdanstvo" EntityType="Self.Grajdanstvo" />
+          <EntitySet Name="Kompanii" EntityType="Self.Kompanii" />
+          <EntitySet Name="KompaniNaimenovanie" EntityType="Self.KompaniNaimenovanie" />
+          <EntitySet Name="MestoRabotu" EntityType="Self.MestoRabotu" />
+          <EntitySet Name="NaimenovanieVacanciy" EntityType="Self.NaimenovanieVacanciy" />
+          <EntitySet Name="Pol" EntityType="Self.Pol" />
+          <EntitySet Name="Polzovateli" EntityType="Self.Polzovateli" />
+          <EntitySet Name="RegionNaimenovanie" EntityType="Self.RegionNaimenovanie" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" />
+          <EntitySet Name="Specializacii" EntityType="Self.Specializacii" />
+          <EntitySet Name="Specialnost" EntityType="Self.Specialnost" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Vacansies" EntityType="Self.Vacansies" />
+          <AssociationSet Name="FK_Applicant_Doljnost" Association="Self.FK_Applicant_Doljnost">
+            <End Role="Doljnost" EntitySet="Doljnost" />
+            <End Role="Applicant" EntitySet="Applicant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Applicant_Doljnost1" Association="Self.FK_Applicant_Doljnost1">
+            <End Role="Doljnost" EntitySet="Doljnost" />
+            <End Role="Applicant" EntitySet="Applicant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Applicant_Goroda" Association="Self.FK_Applicant_Goroda">
+            <End Role="Goroda" EntitySet="Goroda" />
+            <End Role="Applicant" EntitySet="Applicant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Applicant_Grajdanstvo" Association="Self.FK_Applicant_Grajdanstvo">
+            <End Role="Grajdanstvo" EntitySet="Grajdanstvo" />
+            <End Role="Applicant" EntitySet="Applicant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Applicant_MestoRabotu" Association="Self.FK_Applicant_MestoRabotu">
+            <End Role="MestoRabotu" EntitySet="MestoRabotu" />
+            <End Role="Applicant" EntitySet="Applicant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Applicant_Pol" Association="Self.FK_Applicant_Pol">
+            <End Role="Pol" EntitySet="Pol" />
+            <End Role="Applicant" EntitySet="Applicant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Applicant_Specialnost" Association="Self.FK_Applicant_Specialnost">
+            <End Role="Specialnost" EntitySet="Specialnost" />
+            <End Role="Applicant" EntitySet="Applicant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Polzovateli_Applicant" Association="Self.FK_Polzovateli_Applicant">
+            <End Role="Applicant" EntitySet="Applicant" />
+            <End Role="Polzovateli" EntitySet="Polzovateli" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vacansies_Doljnost" Association="Self.FK_Vacansies_Doljnost">
+            <End Role="Doljnost" EntitySet="Doljnost" />
+            <End Role="Vacansies" EntitySet="Vacansies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kompanii_CompaniNaimenovanie" Association="Self.FK_Kompanii_CompaniNaimenovanie">
+            <End Role="KompaniNaimenovanie" EntitySet="KompaniNaimenovanie" />
+            <End Role="Kompanii" EntitySet="Kompanii" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Polzovateli_Kompanii" Association="Self.FK_Polzovateli_Kompanii">
+            <End Role="Kompanii" EntitySet="Kompanii" />
+            <End Role="Polzovateli" EntitySet="Polzovateli" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vacansies_Kompanii" Association="Self.FK_Vacansies_Kompanii">
+            <End Role="Kompanii" EntitySet="Kompanii" />
+            <End Role="Vacansies" EntitySet="Vacansies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vacansies_NaimenovanieVacanciy" Association="Self.FK_Vacansies_NaimenovanieVacanciy">
+            <End Role="NaimenovanieVacanciy" EntitySet="NaimenovanieVacanciy" />
+            <End Role="Vacansies" EntitySet="Vacansies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Polzovateli_Roles" Association="Self.FK_Polzovateli_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Polzovateli" EntitySet="Polzovateli" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vacansies_RegionNaimenovanie" Association="Self.FK_Vacansies_RegionNaimenovanie">
+            <End Role="RegionNaimenovanie" EntitySet="RegionNaimenovanie" />
+            <End Role="Vacansies" EntitySet="Vacansies" />
+          </AssociationSet>
+          <AssociationSet Name="VacanciiAndApplicant" Association="Self.VacanciiAndApplicant">
+            <End Role="Applicant" EntitySet="Applicant" />
+            <End Role="Vacansies" EntitySet="Vacansies" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище RecruimentAgencyModel1Container" CdmEntityContainer="RecruimentAgencyEntities1">
+          <EntitySetMapping Name="Applicant">
+            <EntityTypeMapping TypeName="RecruimentAgencyModel1.Applicant">
+              <MappingFragment StoreEntitySet="Applicant">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="FIO" ColumnName="FIO" />
+                <ScalarProperty Name="idGoroda" ColumnName="idGoroda" />
+                <ScalarProperty Name="DataRojenia" ColumnName="DataRojenia" />
+                <ScalarProperty Name="idPola" ColumnName="idPola" />
+                <ScalarProperty Name="idGrajdanstva" ColumnName="idGrajdanstva" />
+                <ScalarProperty Name="OpitRabotu" ColumnName="OpitRabotu" />
+                <ScalarProperty Name="idMestaRabotu" ColumnName="idMestaRabotu" />
+                <ScalarProperty Name="NachaloRabotu" ColumnName="NachaloRabotu" />
+                <ScalarProperty Name="OkonchanieRabotu" ColumnName="OkonchanieRabotu" />
+                <ScalarProperty Name="idDoljnosti" ColumnName="idDoljnosti" />
+                <ScalarProperty Name="Obyzonasti" ColumnName="Obyzonasti" />
+                <ScalarProperty Name="InformaciaOSebe" ColumnName="InformaciaOSebe" />
+                <ScalarProperty Name="KluchevieNaviki" ColumnName="KluchevieNaviki" />
+                <ScalarProperty Name="idSpecialnost" ColumnName="idSpecialnost" />
+                <ScalarProperty Name="idJelaimayaDoljnost" ColumnName="idJelaimayaDoljnost" />
+                <ScalarProperty Name="Zarplata" ColumnName="Zarplata" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Doljnost">
+            <EntityTypeMapping TypeName="RecruimentAgencyModel1.Doljnost">
+              <MappingFragment StoreEntitySet="Doljnost">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="NaimenovanieDoljnosti" ColumnName="NaimenovanieDoljnosti" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Goroda">
+            <EntityTypeMapping TypeName="RecruimentAgencyModel1.Goroda">
+              <MappingFragment StoreEntitySet="Goroda">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="NazvanieGoroda" ColumnName="NazvanieGoroda" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Grajdanstvo">
+            <EntityTypeMapping TypeName="RecruimentAgencyModel1.Grajdanstvo">
+              <MappingFragment StoreEntitySet="Grajdanstvo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="NaimenovanieGrajdanstva" ColumnName="NaimenovanieGrajdanstva" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kompanii">
+            <EntityTypeMapping TypeName="RecruimentAgencyModel1.Kompanii">
+              <MappingFragment StoreEntitySet="Kompanii">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idNaimenovanieKompanii" ColumnName="idNaimenovanieKompanii" />
+                <ScalarProperty Name="INN" ColumnName="INN" />
+                <ScalarProperty Name="OGRN" ColumnName="OGRN" />
+                <ScalarProperty Name="DataRegistratia" ColumnName="DataRegistratia" />
+                <ScalarProperty Name="UridicheskiyAdres" ColumnName="UridicheskiyAdres" />
+                <ScalarProperty Name="Rukovoditel" ColumnName="Rukovoditel" />
+                <ScalarProperty Name="OpisanieKompanii" ColumnName="OpisanieKompanii" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KompaniNaimenovanie">
+            <EntityTypeMapping TypeName="RecruimentAgencyModel1.KompaniNaimenovanie">
+              <MappingFragment StoreEntitySet="KompaniNaimenovanie">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="NaimenovanieKompani" ColumnName="NaimenovanieKompani" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MestoRabotu">
+            <EntityTypeMapping TypeName="RecruimentAgencyModel1.MestoRabotu">
+              <MappingFragment StoreEntitySet="MestoRabotu">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="NaimenovanieMestaRabotu" ColumnName="NaimenovanieMestaRabotu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NaimenovanieVacanciy">
+            <EntityTypeMapping TypeName="RecruimentAgencyModel1.NaimenovanieVacanciy">
+              <MappingFragment StoreEntitySet="NaimenovanieVacanciy">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="NaimenovanieVacancii" ColumnName="NaimenovanieVacancii" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pol">
+            <EntityTypeMapping TypeName="RecruimentAgencyModel1.Pol">
+              <MappingFragment StoreEntitySet="Pol">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="NaimenovaniePola" ColumnName="NaimenovaniePola" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Polzovateli">
+            <EntityTypeMapping TypeName="RecruimentAgencyModel1.Polzovateli">
+              <MappingFragment StoreEntitySet="Polzovateli">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="idRole" ColumnName="idRole" />
+                <ScalarProperty Name="idApplicant" ColumnName="idApplicant" />
+                <ScalarProperty Name="idKompanii" ColumnName="idKompanii" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RegionNaimenovanie">
+            <EntityTypeMapping TypeName="RecruimentAgencyModel1.RegionNaimenovanie">
+              <MappingFragment StoreEntitySet="RegionNaimenovanie">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="NaimenovanieRegion" ColumnName="NaimenovanieRegion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="RecruimentAgencyModel1.Roles">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="NaimenovanieRole" ColumnName="NaimenovanieRole" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Specializacii">
+            <EntityTypeMapping TypeName="RecruimentAgencyModel1.Specializacii">
+              <MappingFragment StoreEntitySet="Specializacii">
+                <ScalarProperty Name="idSpecializacii" ColumnName="idSpecializacii" />
+                <ScalarProperty Name="NaimenovanieSpecializacii" ColumnName="NaimenovanieSpecializacii" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Specialnost">
+            <EntityTypeMapping TypeName="RecruimentAgencyModel1.Specialnost">
+              <MappingFragment StoreEntitySet="Specialnost">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="NaimenovanieSpecialnosti" ColumnName="NaimenovanieSpecialnosti" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="RecruimentAgencyModel1.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vacansies">
+            <EntityTypeMapping TypeName="RecruimentAgencyModel1.Vacansies">
+              <MappingFragment StoreEntitySet="Vacansies">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idKompanii" ColumnName="idKompanii" />
+                <ScalarProperty Name="idNaimenovaniaVacancia" ColumnName="idNaimenovaniaVacancia" />
+                <ScalarProperty Name="idDoljnosti" ColumnName="idDoljnosti" />
+                <ScalarProperty Name="idRegion" ColumnName="idRegion" />
+                <ScalarProperty Name="ZarabotnaiPlata" ColumnName="ZarabotnaiPlata" />
+                <ScalarProperty Name="Uslovia" ColumnName="Uslovia" />
+                <ScalarProperty Name="Obazanosti" ColumnName="Obazanosti" />
+                <ScalarProperty Name="Trebovania" ColumnName="Trebovania" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="VacanciiAndApplicant" TypeName="RecruimentAgencyModel1.VacanciiAndApplicant" StoreEntitySet="VacanciiAndApplicant">
+            <EndProperty Name="Applicant">
+              <ScalarProperty Name="id" ColumnName="idAplicant" />
+            </EndProperty>
+            <EndProperty Name="Vacansies">
+              <ScalarProperty Name="id" ColumnName="idVacancii" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
